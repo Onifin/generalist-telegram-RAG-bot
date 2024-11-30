@@ -13,8 +13,8 @@ Para configurar e executar o bot, siga os passos abaixo:
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/telegram-rag-assistant.git
-   cd telegram-rag-assistant
+   git clone https://github.com/Onifin/PJe-Telegram-RAG-Bot.git
+   cd PJe-Telegram-RAG-Bot
    ```
 
 2. **Crie um ambiente virtual Python**
