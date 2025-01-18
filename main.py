@@ -3,10 +3,21 @@ from dotenv import load_dotenv
 import os
 import requests
 
+from langchain_google_genai import ChatGoogleGenerativeAI
+from rag import RAG
+
 load_dotenv()
 
-TELEGRAM_API_KEY = os.getenv("TELEGRAM_API_KEY")
+# Inicializar o modelo
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 
+# Criar instância do RAG
+# Carregar documento
+rag = RAG(llm)
+rag.load_document('extracted_text.txt')
+
+# Inicializar o bot
+TELEGRAM_API_KEY = os.getenv("TELEGRAM_API_KEY")
 PJe_bot = telebot.TeleBot(TELEGRAM_API_KEY)
 
 @PJe_bot.message_handler(commands=['start'])
@@ -19,8 +30,8 @@ def send_help_message(message):
 
 @PJe_bot.message_handler(func = lambda message: True)
 def send_message(message):
-    print(message)
-    PJe_bot.reply_to(message, message.text)
+    response = rag.generate_response(message.text)
+    PJe_bot.reply_to(message, response["answer"])
 
 @PJe_bot.message_handler(content_types=['photo'])
 def handle_photo(message):

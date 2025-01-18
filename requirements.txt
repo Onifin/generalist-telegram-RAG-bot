@@ -1,3 +1,9 @@
 pyTelegramBotAPI
 python-dotenv
 requests
+langchain
+langchain-community
+langchain-google-genai
+langchain-ollama
+langchain-chroma
+chromadb
