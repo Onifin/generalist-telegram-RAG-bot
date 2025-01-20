@@ -3,3 +3,4 @@ venv
 extracted_text.txt
 db
 pje.txt
+__pycache__
