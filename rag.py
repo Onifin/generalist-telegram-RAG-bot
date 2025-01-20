@@ -60,7 +60,7 @@ class RAG:
             chunk_size (int): Size of text chunks
             chunk_overlap (int): Overlap between chunks
         """
-        loader = TextLoader(file_path)
+        loader = TextLoader(file_path, encoding="utf-8")
         documents = loader.load()
         
         text_splitter = RecursiveCharacterTextSplitter(
