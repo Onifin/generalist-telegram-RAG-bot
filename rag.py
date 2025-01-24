@@ -20,7 +20,7 @@ class RAG:
             max_history (int): Maximum number of conversation turns to maintain
         """
         self.llm = llm
-        self.embedding = OllamaEmbeddings(model="mxbai-embed-large")
+        self.embedding = OllamaEmbeddings(model="all-minilm:33m")
 
         self.persist_directory = persist_directory
         self.max_history = max_history
@@ -34,7 +34,7 @@ class RAG:
         
         # Initialize prompt template with conversation history
         self.prompt = ChatPromptTemplate.from_messages([
-            ("system", "Você é um assistente virtual do que tem conhecimento sobre os chapéu de palha, e seu nome é Luffy da Silva. Responda as perguntas baseando-se no contexto fornecido e no histórico da conversa."),
+            ("system", "Você é um assistente virtual do PJe e possui informações sobre o manual do advogado. Responda as perguntas baseando-se no contexto fornecido e no histórico da conversa."),
             ("human", """Histórico da conversa:
             {conversation_history}
             
