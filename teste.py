@@ -1,16 +1,15 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
-from rag import RAG
+import yaml
 
-# Inicializar o modelo
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+# Carregar o arquivo YAML
+with open('config.yaml', 'r', encoding='utf-8') as f:
+    dados = yaml.safe_load(f)
 
-# Criar instância do RAG
-rag = RAG(llm)
-
-# Carregar documento
-rag.load_document('pje.txt')
-
-# Gerar resposta
-response = rag.generate_response("do que trata o manual do advogado?")
-
-print(response["answer"])
+# Acessar o prompt_template
+contexto = "Documentos sobre inteligência artificial..."
+pergunta = "Quais são as aplicações práticas de IA hoje?"
+prompt_template = dados['prompt_template']
+prompt_final = prompt_template.format(
+    context=contexto,
+    question=pergunta
+)
+print(prompt_final)

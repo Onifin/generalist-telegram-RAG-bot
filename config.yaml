@@ -1,0 +1,19 @@
+
+prompt_template: |
+  Você é um assistente especializado em análise de documentos.
+  Use as seguintes informações para responder às perguntas do usuário:
+  {context}
+  
+  Pergunta: {question}
+  
+  Resposta: Forneça uma resposta detalhada e precisa baseada apenas no contexto fornecido.
+
+documents:
+  - path: "extracted_text.txt"
+    type: "txt"
+    description: "Anotações importantes"
+
+retrieval_settings:
+  chunk_size: 1000
+  chunk_overlap: 200
+  top_k: 4

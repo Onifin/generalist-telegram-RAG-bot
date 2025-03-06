@@ -5,8 +5,6 @@ from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from dotenv import load_dotenv
-import os
 from typing import List, Dict
 
 class RAG:
