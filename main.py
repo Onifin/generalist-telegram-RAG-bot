@@ -30,12 +30,11 @@ def send_help_message(message):
 
 @PJe_bot.message_handler(func = lambda message: True)
 def send_message(message):
-    response = rag.generate_response(message.text)
+    response = rag.generate_response(message.text, message.from_user.id)
     PJe_bot.reply_to(message, response["answer"])
 
 @PJe_bot.message_handler(content_types=['photo'])
 def handle_photo(message):
-    print(message)
     # Acessar a lista de fotos recebidas (diferentes resoluções)
     photo_sizes = message.json.get('photo', [])
     

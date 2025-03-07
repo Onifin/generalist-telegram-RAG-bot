@@ -6,6 +6,11 @@ from langchain_ollama import OllamaEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from typing import List, Dict
+import yaml
+
+# Carregar o arquivo YAML
+with open('config.yaml', 'r', encoding='utf-8') as f:
+    config = yaml.safe_load(f)
 
 class RAG:
     def __init__(self, llm, persist_directory="./db", max_history=5):
@@ -17,37 +22,53 @@ class RAG:
             persist_directory (str): Directory to persist the vector database
             max_history (int): Maximum number of conversation turns to maintain
         """
+
+        print("Iniciando modelo")
         self.llm = llm
         self.embedding = OllamaEmbeddings(model="all-minilm:33m")
+        print("Modelo iniciado")
 
         self.persist_directory = persist_directory
         self.max_history = max_history
         self.conversation_history = []
+        self.history_handler = history_handler()
         
+        print("Criando banco de dados de veetores")
         self.vectordb = Chroma(
             collection_name="documents",
             embedding_function=self.embedding,
-            persist_directory=self.persist_directory
+            persist_directory=self.persist_directory,
+            collection_metadata={"hnsw:space": "cosine"}
         )
-        
+        print("Banco de dados criado")
+
+        system_prompt = config['prompt_template']['system']
+
         # Initialize prompt template with conversation history
         self.prompt = ChatPromptTemplate.from_messages([
-            ("system", "Você é um assistente virtual do PJe e possui informações sobre o manual do advogado. Responda as perguntas baseando-se no contexto fornecido e no histórico da conversa."),
-            ("human", """Histórico da conversa:
-            {conversation_history}
-            
-            Caso a mensagem seja uma pergunta, responda usando o contexto fornecido, se ele for relevante (eu não possuo acesso ao contexto, apenas você possui. caso ele não seja relevante, não precisa ser mencionado) NÃO FALE SOBRE O CONTEXTO NA SUA RESPOSTA. Pergunta: {input}. Contexto: {context}.""")
+            ("system", system_prompt),
+            ("human","""
+                **Histórico de Mensagens:**
+                {conversation_history}
+
+                **Pergunta:**
+                {input}
+
+                **Contexto:**
+                {context}"""
+            )
         ])
         
+        print("Iniciando RAG")
         # Initialize retriever
         self.retriever = self.vectordb.as_retriever(
-            search_type="similarity_score_threshold",
-            search_kwargs={"score_threshold": 0.2}
+            search_type="similarity"
         )
         
         # Initialize chains
         self.combine_docs_chain = create_stuff_documents_chain(self.llm, self.prompt)
         self.retrieval_chain = create_retrieval_chain(self.retriever, self.combine_docs_chain)
+        print("RAG iniciada")
 
     def load_document(self, file_path, chunk_size=1000, chunk_overlap=0):
         """
@@ -70,24 +91,28 @@ class RAG:
         text_contents = [doc.page_content for doc in texts]
         self.vectordb.add_texts(texts=text_contents)
 
-    def _format_conversation_history(self) -> str:
+    def _format_conversation_history(self, user_id: str) -> str:
         """
         Format the conversation history into a string.
         
         Returns:
             str: Formatted conversation history
         """
+
+        self.conversation_history = self.history_handler.get_user_history(user_id)
+
         if not self.conversation_history:
             return "Nenhum histórico de conversa anterior."
             
         formatted_history = []
+
         for i, (query, response) in enumerate(self.conversation_history, 1):
             formatted_history.append(f"Pergunta {i}: {query}")
             formatted_history.append(f"Resposta {i}: {response}\n")
             
         return "\n".join(formatted_history)
 
-    def generate_response(self, query: str) -> Dict:
+    def generate_response(self, query: str, user_id: str) -> Dict:
         """
         Generate a response based on the query using RAG and conversation history.
         
@@ -100,7 +125,7 @@ class RAG:
         # Prepare input with conversation history
         input_dict = {
             "input": query,
-            "conversation_history": self._format_conversation_history()
+            "conversation_history": self._format_conversation_history(user_id)
         }
         
         # Generate response
@@ -109,23 +134,25 @@ class RAG:
         # Update conversation history
         if "answer" in result:
             self.conversation_history.append((query, result["answer"]))
+
             # Maintain only the last max_history turns
             if len(self.conversation_history) > self.max_history:
                 self.conversation_history.pop(0)
-        
+
+            self.history_handler.update_history(user_id, self.conversation_history)
+            
         return result
 
-    def clear_history(self):
-        """
-        Clear the conversation history.
-        """
-        self.conversation_history = []
+class history_handler:
+    def __init__(self):
+        self.history_list = dict()
 
-    def get_conversation_history(self) -> List[tuple]:
-        """
-        Get the current conversation history.
-        
-        Returns:
-            List[tuple]: List of (query, response) pairs
-        """
-        return self.conversation_history.copy()
+    def get_user_history(self, user_id):
+        try:
+            return self.history_list[user_id]
+        except:
+            self.history_list[user_id] = []
+            return self.history_list[user_id]
+
+    def update_history(self, user_id, history):
+        self.history_list[user_id] = history
