@@ -1,6 +1,6 @@
 .env
 venv
-extracted_text.txt
+documents
 db
 pje.txt
 __pycache__

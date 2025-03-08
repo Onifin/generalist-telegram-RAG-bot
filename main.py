@@ -1,5 +1,6 @@
 import telebot
 from dotenv import load_dotenv
+import yaml
 import os
 import requests
 
@@ -8,13 +9,15 @@ from rag import RAG
 
 load_dotenv()
 
+with open('config.yaml', 'r', encoding='utf-8') as f:
+    config = yaml.safe_load(f)
+
 # Inicializar o modelo
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
 # Criar instância do RAG
 # Carregar documento
 rag = RAG(llm)
-rag.load_document('extracted_text.txt')
 
 # Inicializar o bot
 TELEGRAM_API_KEY = os.getenv("TELEGRAM_API_KEY")
@@ -22,11 +25,11 @@ PJe_bot = telebot.TeleBot(TELEGRAM_API_KEY)
 
 @PJe_bot.message_handler(commands=['start'])
 def send_start_message(message):
-    PJe_bot.reply_to(message, "Olá, eu sou o assistente virtual do PJe.")
+    PJe_bot.reply_to(message, config['commands']['start'])
 
 @PJe_bot.message_handler(commands=['help'])
 def send_help_message(message):
-    PJe_bot.reply_to(message, "Eu posso ajudar respondendo mensagens relacionadas ao PJe.")
+    PJe_bot.reply_to(message, config['commands']['help'])
 
 @PJe_bot.message_handler(func = lambda message: True)
 def send_message(message):

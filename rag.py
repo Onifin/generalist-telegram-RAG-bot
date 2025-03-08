@@ -5,7 +5,8 @@ from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from typing import List, Dict
+from langchain_community.document_loaders import DirectoryLoader
+from typing import Dict
 import yaml
 
 # Carregar o arquivo YAML
@@ -34,12 +35,17 @@ class RAG:
         self.history_handler = history_handler()
         
         print("Criando banco de dados de veetores")
-        self.vectordb = Chroma(
-            collection_name="documents",
-            embedding_function=self.embedding,
-            persist_directory=self.persist_directory,
-            collection_metadata={"hnsw:space": "cosine"}
-        )
+
+        self.chunk_size = system_prompt = config['retrieval_settings']['chunk_size']
+        self.chunk_overlap = system_prompt = config['retrieval_settings']['chunk_overlap']
+        self.vectordb = self.create_vector_db(files_dir="./documents", chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
+        
+        # Chroma(
+        #     collection_name="documents",
+        #     embedding_function=self.embedding,
+        #     persist_directory=self.persist_directory,
+        #     collection_metadata={"hnsw:space": "cosine"}
+        # )
         print("Banco de dados criado")
 
         system_prompt = config['prompt_template']['system']
@@ -70,7 +76,7 @@ class RAG:
         self.retrieval_chain = create_retrieval_chain(self.retriever, self.combine_docs_chain)
         print("RAG iniciada")
 
-    def load_document(self, file_path, chunk_size=1000, chunk_overlap=0):
+    def create_vector_db(self, files_dir, chunk_size=1000, chunk_overlap=200):
         """
         Load and process a text document into the vector database.
         
@@ -79,17 +85,22 @@ class RAG:
             chunk_size (int): Size of text chunks
             chunk_overlap (int): Overlap between chunks
         """
-        loader = TextLoader(file_path = file_path, encoding="utf-8")
+
+        loader = DirectoryLoader(files_dir, glob="./*.txt", loader_cls=TextLoader)
         documents = loader.load()
-        
+
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap
         )
+
         texts = text_splitter.split_documents(documents)
+
+        vectordb = Chroma.from_documents(documents = texts,
+                                        persist_directory = self.persist_directory,
+                                        embedding = self.embedding)
         
-        text_contents = [doc.page_content for doc in texts]
-        self.vectordb.add_texts(texts=text_contents)
+        return vectordb
 
     def _format_conversation_history(self, user_id: str) -> str:
         """

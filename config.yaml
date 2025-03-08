@@ -8,6 +8,19 @@ prompt_template:
     - Seja detalhista e preciso
     - Formate respostas em markdown quando necessário
 
+commands:
+  start: |
+    Olá! 👋 Eu sou seu assistente virtual especializado em análise de documentos. 
+    Posso ajudar a extrair informações detalhadas de textos e documentos que já estão armazenados no meu banco de dados. 
+    Para começar, faça uma pergunta específica e eu buscarei a resposta no meu banco de dados de vetores. 
+    Use o comando /help se precisar de orientações.
+
+  help: |
+    🤖 **Como posso ajudar?**
+    - Faça perguntas específicas sobre os documentos que já estão armazenados no meu banco de dados.
+    - Eu buscarei as informações mais relevantes usando técnicas de recuperação de vetores.
+    - Lembre-se: eu me baseio exclusivamente no contexto fornecido pelo banco de dados.
+
 documents:
   - path: "extracted_text.txt"
     type: "txt"
