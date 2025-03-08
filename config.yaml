@@ -22,9 +22,7 @@ commands:
     - Lembre-se: eu me baseio exclusivamente no contexto fornecido pelo banco de dados.
 
 documents:
-  - path: "extracted_text.txt"
-    type: "txt"
-    description: "Anotações importantes"
+  path: ./documents
 
 retrieval_settings:
   chunk_size: 1000

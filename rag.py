@@ -38,14 +38,9 @@ class RAG:
 
         self.chunk_size = system_prompt = config['retrieval_settings']['chunk_size']
         self.chunk_overlap = system_prompt = config['retrieval_settings']['chunk_overlap']
-        self.vectordb = self.create_vector_db(files_dir="./documents", chunk_size=self.chunk_size, chunk_overlap=self.chunk_overlap)
-        
-        # Chroma(
-        #     collection_name="documents",
-        #     embedding_function=self.embedding,
-        #     persist_directory=self.persist_directory,
-        #     collection_metadata={"hnsw:space": "cosine"}
-        # )
+        self.files_dir = config['documents']['path']
+        self.vectordb = self.create_vector_db(files_dir = self.files_dir, chunk_size = self.chunk_size, chunk_overlap = self.chunk_overlap)
+       
         print("Banco de dados criado")
 
         system_prompt = config['prompt_template']['system']
