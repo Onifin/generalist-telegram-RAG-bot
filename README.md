@@ -1,11 +1,6 @@
 # Telegram RAG Assistant
 
-Este repositório contém um assistente virtual para Telegram, desenvolvido utilizando a abordagem **RAG (Retrieval-Augmented Generation)**. O bot combina IA generativa com busca eficiente em documentos para responder a perguntas de forma precisa e contextualizada.
-
-## Tecnologias
-- **Linguagem:** Python
-- **Frameworks:** LangChain, Gemini API, Telebot
-- **Armazenamento:** A definir
+Este repositório contém um assistente virtual para Telegram, desenvolvido utilizando a abordagem RAG (Retrieval-Augmented Generation). O bot combina IA generativa com busca eficiente em documentos para responder a perguntas de forma precisa e contextualizada. A ideia central é criar um assistente genérico que possa ser facilmente adaptado a diferentes contextos, bastando fornecer um conjunto de documentos e um prompt inicial.
 
 # Como Usar
 
@@ -54,7 +49,7 @@ Para configurar e executar o bot, siga os passos abaixo:
 
 5. **Configure os dados**
 
-   Crie um arquivo chamado `extracted_text.txt` com o texto que será fornecido para o bot.
+   Crie um arquivo chamado `extracted_text.txt` com7 o texto que será fornecido para o bot.
 
    Caso seu texto venha de uma página web, considere usar o WebDataDrill que consegue extrair os textos e estruturar no formato correto para o bot.
 
