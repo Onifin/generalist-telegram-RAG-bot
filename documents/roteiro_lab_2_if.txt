@@ -1,0 +1,143 @@
+Laboratório 2
+
+Prática com: 
+
+- Estruturas condicionais 
+- Operadores lógicos
+
+Dia 1: Atividades de treinamento e demonstrações
+
+- [&lt;RawText children='Atividades Práticas na Plataforma LoP'&gt;]
+    - Estrutura Condicional - Lista Ressolvida (LOP)
+
+Vídeos da Lista Resolvida
+
+- [&lt;RawText children='Altura acima de média'&gt;]
+- [&lt;RawText children='Altura abaixo da média'&gt;]
+- [&lt;RawText children='Compara com 10'&gt;]
+- [&lt;RawText children='Compara com 20'&gt;]
+- [&lt;RawText children='O quadrado ou raiz'&gt;]
+- [&lt;RawText children='Compara com 20 parte 2'&gt;]
+- [&lt;RawText children='Menor de 3 números'&gt;]
+
+Códigos dos Exercícios Resolvidos
+
+Altura acima de média
+
+```
+altura = parseFloat(prompt("Entre com a altura:"))
+if ( altura > 1.73 ) {
+    alert("Acima da media")
+}
+```
+
+Altura abaixo da média
+
+```
+altura = parseFloat(prompt("Entre com uma altura:"))
+if (altura < 1.73 ) {
+    alert("Abaixo da media")
+}
+```
+
+Compara com 10
+
+```
+var x; 
+x = prompt("Entre com um número"); 
+if ( x == 10 ){
+    console.log("igual"); 
+}
+```
+
+Compara com 20
+
+```
+x = parseFloat(prompt("Entre com um número:"))
+if ( x >= 20 ){
+    alert("maior ou igual")
+}
+if ( x < 20 ){
+    alert("menor")
+}
+```
+
+O quadrado ou raiz
+
+```
+x = parseFloat(prompt("Entre com um número"))
+if ( x < 0 ) {
+    alert( Math.pow(x, 2) )
+} 
+else {
+    alert( Math.sqrt(x))
+}
+```
+
+Compara com 20 parte 2
+
+```
+x = parseFloat(prompt("Entre com um número:"))
+if ( x > 20 ){
+    alert("maior")
+}
+else {
+    if ( x < 20 ){
+        alert("menor")
+    }
+    else {
+        alert("igual")
+    }
+}
+```
+
+Menor de 3 números
+
+```
+x = parseFloat(prompt("Entre com x"))
+y = parseFloat(prompt("Entre com y"))
+z = parseFloat(prompt("Entre com z"))
+
+var menor;  
+// verifico se x é o menor de todos 
+if ( x <= y ){ 
+    if ( x <= z ){
+        menor = x; 
+    }
+}
+// verifico se y é o menor de todos 
+if ( y <= x) {
+    if ( y <= z ){
+        menor = y; 
+    }
+}
+// verifico se z é o menor de todos 
+if (z <= x){
+    if ( z <= y) {
+        menor = z; 
+    }
+}
+alert(menor)
+```
+
+Exercícios Extras
+
+Dia 2: Prática
+
+Resolver os exercícios da lista "Estrutura Condicional - Lista Prática" da  Plataforma LoP . 
+
+Ordem das questões:
+
+- Calcular Índice de Massa Corporal (IMC) - parte 1
+- Índice de Massa Corporal (IMC) - parte 2
+- IMC simples com 2 decisões
+- IMC novamente com 2 decisões
+- Encontrando números pares
+- Par ou impar
+- Média com 3 situações de decisão
+- Média com 3 situações de decisão - parte 2
+- Idades e permissões
+- Divisível por 3 e por 4 ao mesmo tempo
+- Categorias de natação
+- Divisível por 3 e por 4 - versão mais complexa
+- Divisível por 3 e por 4 - versão ainda mais complexa

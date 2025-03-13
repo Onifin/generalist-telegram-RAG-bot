@@ -1,6 +1,5 @@
 .env
 venv
-documents
 db
 pje.txt
 __pycache__

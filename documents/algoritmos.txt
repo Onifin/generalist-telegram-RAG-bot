@@ -1,0 +1,263 @@
+Algoritmos
+
+Um algoritmo é uma sequência de instruções bem definidas e organizadas que visam resolver um problema ou realizar uma tarefa específica. Na computação, os algoritmos são a base de todo o processo de resolução de problemas e são essenciais para o desenvolvimento de programas de software.
+
+Um algoritmo é como uma receita culinária: ele descreve passo a passo o que precisa ser feito para alcançar um resultado desejado. Assim como uma receita detalha os ingredientes necessários e as etapas para preparar um prato, um algoritmo descreve os passos necessários para resolver um problema computacional.
+
+Definição 1:  "É uma sequência lógica de passos que visa atingir um objetivo específico."
+
+Características dos Algoritmos
+
+1. [&lt;RawText children='Definição precisa'&gt;]
+2. [&lt;RawText children='Entrada e Saída'&gt;]
+3. [&lt;RawText children='Finitude'&gt;]
+4. [&lt;RawText children='Eficiência'&gt;]
+
+Exemplos de Algoritmos
+
+Algoritmo para Fazer um Sanduíche:
+
+1. Pegue duas fatias de pão.
+2. Espalhe manteiga em uma fatia de pão.
+3. Coloque queijo e presunto na fatia de pão com manteiga.
+4. Cubra com a segunda fatia de pão.
+5. Corte o sanduíche ao meio.
+6. Se quiser, adicione alface e tomate.
+
+Este é um algoritmo simples que descreve como fazer um sanduíche. Cada passo é claro e direto.
+
+Como chegar ao parque?
+
+1. Saia de casa em direção ao mercado
+2. Depois da farmácia, dobre à direita
+3. Conte 3 ruas e dobre à esquerda
+4. Ande 500 metros e você chegará ao parque
+
+Chegar pontualmente à aula de 7:00 horas
+
+1. Acordar às 5h30
+2. Tomar banho
+3. Tomar o café da manhã
+4. Pegar a mochila
+5. Sair para a parada de ônibus
+
+Algoritmo para contar até 10
+
+1. Comece com o número 1.
+2. Adicione 1 ao número atual.
+3. Se o número for menor ou igual a 10, repita o passo 2.
+4. Pare quando chegar a 10.
+5. Este algoritmo mostra como contar até 10 usando repetição.
+
+Exercício 1
+
+O pneu do carro furou, qual o algoritmo que você usaria para substituir o pneu furado?
+
+Introdução à Lógica
+
+- O que queremos dizer com “Tem lógica” ou “É lógico” 
+- A lógica é o ramo da filosofia que cuida das regras do pensar correto. 
+    - Usar corretamente as leis do pensamento
+    - Determinar operações válidas ou não 
+- A lógica é um meio de garantir que nosso pensamento proceda corretamente a fim de chegar a conhecimentos verdadeiros (válidos)
+
+Exemplo 1
+
+- Todo mamífero é um animal
+- Todo cavalo é um mamífero
+- Logo, todo cavalo é um animal
+
+Exemplo 2
+
+- Daniela é mais jovem que Adriano
+- Carlos é mais velho que Daniela
+    - Adriano é mais velho que Carlos (Falso)
+    - Carlos é mais velho que Adriano (Falso)
+    - [&lt;RawText children='Daniela é a mais nova das 3 pessoas (Verdadeiro)'&gt;]
+
+Exemplo 3
+
+- “Se o RU servir cuscuz hoje, então eu jantarei no RU”
+- “O RU serviu cuscuz”
+- Logo, eu jantei no RU
+
+Exemplo 4
+
+- Um 
+- Ele possui um barco pequeno, que transporta 
+- Se ele deixar o carneiro junto do capim em alguma das margens do rio, o carneiro come o capim
+
+Slide da resposta do problema do pastor  
+
+Sugestão de resolução:
+
+1. Levar o carneiro para a margem leste
+2. Voltar para a margem oeste
+3. Levar um fardo para margem leste
+4. Voltar com o carneiro para margem oeste
+5. Levar o segundo fardo para margem leste
+6. Voltar para margem oeste
+7. Levar o carneiro para margem leste
+
+Outros desafios de lógica
+
+- [&lt;RawText children='Torre de Hanói'&gt;]
+- [&lt;RawText children='Na Medida Certa'&gt;]
+
+Por que estudar lógica e algoritmos?
+
+- Aprender 
+- Uma sequência de passos é uma forma de explicar/organizar a solução para um problema
+
+Definição 2:   Algoritmo  é uma forma de expressar o raciocínio  lógico.
+
+Exercício 2
+
+Veja abaixo o teste de QI japonês, conhecido como o problema da travessia do rio. O problema consiste em 8 pessoas que têm que atravessar um rio utilizando uma jangada (Fonte: http://www.japones.net.br/teste-de-qi-japones/).
+
+As oito pessoas são:
+
+- pai;
+- mãe;
+- dois filhos;
+- duas filhas;
+- um policial;
+- um prisioneiro.
+
+Para efetuar a travessia é necessário seguir algumas regras:
+
+- A jangada só pode carregar duas pessoas por vez;
+- Somente o pai, a mãe e o policial sabem manobrar a jangada;
+- Os filhos não podem ficar com a mãe na ausência do pai em nenhuma das margens do rio;
+- Os filhos não podem ser transportados pela mãe;
+- As filhas não podem ficar com o pai na ausência da mãe em nenhuma das margens do rio;
+- As filhas não podem ser transportadas pelo pai;
+- O prisioneiro não pode ficar com os membros da família na ausência do policial;
+
+Formas de representação de algoritmos
+
+Descrição Narrativa
+
+- Uso da linguagem natural: Português, inglês, espanhol, etc.;
+- Considera os passos mais importantes e pode servir de esboço para outras representações. 
+- Temos a inconveniência da má interpretação, originando 
+- Para evitar más interpretações, a escrita do algoritmo deve ser mais detalhada: 
+
+Exemplo 1
+
+- Chegar pontualmente na aula
+    - Acordar às 5h30 
+    - Tomar banho 
+    - [&lt;RawText children='Tomar o café da manhã'&gt;]
+    - Pegar a mochila 
+    - Sair para a parada de ônibus
+
+Exemplo 1 - Detalhado
+
+- Chegar pontualmente na aula
+    - Acordar às 5h30 
+    - Tomar banho 
+    - [&lt;RawText children='Tomar o café da manhã'&gt;]
+        - Pegar leite na geladeira e servir em um copo 
+        - Pegar uma fatia de queijo 
+        - Cortar um pão ao meio e colocar o queijo 
+        - Comer o sanduíche e tomar o leite 
+    - Pegar a mochila 
+    - Sair para a parada de ônibus
+
+Fluxograma
+
+<!-- missing-text -->
+
+tabela-fluxograma
+
+Fonte da imagem: https://www.treinaweb.com.br/blog/conceitos-usados-no-aprendizado-de-programacao 
+
+Exemplo de fluxograma para calcular a média a apartir das notas de três provas:
+
+<!-- missing-text -->
+
+Fluxograma_algoritmo01
+
+Fonte da imagem:  https://saulo.arisa.com.br/  
+
+Pseudocódigo
+
+- Estrutura semelhante às linguagens de programação, porem é uma forma rápida de expressar o algoritmo sem perder tempo com detalhes. 
+- Mais didático e fácil compreensão 
+
+Exemplo - Média de dois números
+
+```
+inicio
+  real n1,n2,r
+  ler n1,n2
+  r <- (n1 + n2) / 2.0
+  escrever "A média é: ", r
+fim
+```
+
+Linguagens de programação
+
+Linguagem padronizada para descrever instruções para um computador. Possui um conjunto de regras sintáticas e semânticas usadas para descrever algoritmos e não possui ambiguidades. 
+
+Exemplo com a linguagem Javascript
+
+```
+x = prompt("Entre com x: ") // leitura de x
+y = prompt("Entre com y: ") // leitura de y
+media = (parseFloat(x) + parseFloat(y))/2; // cálculo da média
+alert("A média é "+media) // escrita do resultado
+```
+
+Códigos com exemplos na página de LoP no GitHub:
+
+- https://github.com/ect-info/lop/tree/master/codigos 
+- https://github.com/ect-info/lop 
+- https://github.com/ect-info/codigos-jogo 
+
+Outros exemplos
+
+- [&lt;RawText children='Maior que 25'&gt;]
+- [&lt;RawText children='Algoritmo representado em forma de um fluxograma'&gt;]
+
+Programação
+
+Aprender a programar é aprender a resolver problemas usando algoritmos e uma linguagem de programação. Aprender a dividir um problema grande em problemas pequenos resolvendo um problema por vez. Este curso de Lógica de Programação foca em resolver problemas matemáticos. 
+
+Exercício 1
+
+Você está construindo uma piscina que mede 4,0 metros de largura, 9,0 metros de comprimento e 2,0 metros de profundidade. Para não gastar demais, você precisa calcular exatamente quantos azulejos serão necessários para toda a piscina. Considere que os azulejos medem 60 x 60 cm cada. 
+
+- Qual a sequência de passos (o algoritmo) para resolver esse problema matemático?
+
+Solução 1: 
+
+- Calcular quantos azulejos são necessários para cobrir toda a área da piscina. 
+
+A solução anterior é muito abstrata. Não estão claras as ações necessárias para resolver o problema. É necessário um detalhamento maior. Solução 2: 
+
+1. Calcular quantos azulejos são necessários no piso
+2. Calcular quantos azulejos são necessários em cada parede
+3. Somar o resultado dos passos 1 e 2
+
+Como calcular o passo 1?
+
+- Área total = 4 * 9 = 36m²
+- Área do azulejo = 0,6 * 0,6 = 0,36m²
+- Quantidade de azulejos = 36 / 0,36 = 100
+
+É possível aprimorar a resolução deste problema da seguinte forma. Para calcular quantos azulejos inteiros serão necessário basta proceder com o seguinte algoritmo: a. Calcular quantos azulejos são necessários na largura b. Calcular quantos azulejos são necessários no comprimento c. Multiplicar o resultado dos passos a) e b)
+
+Referências
+
+- [&lt;RawText children='Livros'&gt;]
+- [&lt;RawText children='Cursos online'&gt;]
+- [&lt;RawText children='Outras referências'&gt;]
+
+Cursos Online
+
+- [&lt;RawText children='Introdução a Programação da Khan Academy'&gt;]
+- [&lt;RawText children='Introdução a Computação na Cursera'&gt;]
+- Slides de aulas da disciplina de Lógica de Porgramação da ECT-UFRN, consultados em 10/03/2022.
+- ChatGPT 3.5, https://chat.openai.com/, consultado em 22/02/2024.
